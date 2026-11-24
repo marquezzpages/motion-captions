@@ -25,6 +25,9 @@ async function load(cfg) {
   env.allowLocalModels = local;
   env.allowRemoteModels = !local;
   env.useBrowserCache = !local;
+  // o modelo vem pelo proprio dominio do site (/hf/), que busca no Hugging Face pelo servidor:
+  // no celular o navegador nao precisa falar com o Hugging Face direto
+  if (!local) env.remoteHost = self.location.origin + "/hf/";
   // caminho relativo ao site (com URL completa o transformers.js acha que o arquivo e remoto)
   env.localModelPath = new URL("../models/", import.meta.url).pathname;
   // motor wasm: o do app quando existe; no site vem do jsDelivr (arquivo grande demais para a hospedagem)

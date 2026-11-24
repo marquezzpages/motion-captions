@@ -5,7 +5,7 @@
  * O modelo de fala (Hugging Face) fica no cache do proprio transformers.js.
  * Login e banco (Supabase) nunca passam pelo cache.
  */
-const VERSAO = "mcm-v2";
+const VERSAO = "mcm-v3";
 const PRE = ["./", "index.html", "config.js", "css/app.css", "manifest.webmanifest", "icons/icon-192.png"];
 const FIXOS = /\/(vendor|fonts|sfx|icons)\//;
 
@@ -24,7 +24,8 @@ self.addEventListener("fetch", e => {
   const same = url.origin === self.location.origin;
   const jsdelivr = url.hostname === "cdn.jsdelivr.net" && url.pathname.indexOf("/npm/onnxruntime-web@") === 0;
   if (!same && !jsdelivr) return; // Supabase, Google, Hugging Face: direto
-  if (same && (url.pathname.indexOf("/models/") >= 0 || url.pathname.indexOf("/_") >= 0)) return;
+  // /hf/ = modelo de fala (o transformers.js ja guarda no cache dele; nao duplicar aqui)
+  if (same && (url.pathname.indexOf("/models/") >= 0 || url.pathname.indexOf("/hf/") === 0 || url.pathname.indexOf("/_") >= 0)) return;
   if (jsdelivr || FIXOS.test(url.pathname)) {
     e.respondWith(caches.open(VERSAO).then(async c => {
       const hit = await c.match(req);
