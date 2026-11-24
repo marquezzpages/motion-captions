@@ -5,7 +5,7 @@
  * O modelo de fala (Hugging Face) fica no cache do proprio transformers.js.
  * Login e banco (Supabase) nunca passam pelo cache.
  */
-const VERSAO = "mcm-v1";
+const VERSAO = "mcm-v2";
 const PRE = ["./", "index.html", "config.js", "css/app.css", "manifest.webmanifest", "icons/icon-192.png"];
 const FIXOS = /\/(vendor|fonts|sfx|icons)\//;
 

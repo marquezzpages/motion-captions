@@ -165,11 +165,20 @@ function work(title, p, txt) {
 
 /* ---------- modelo de fala: dentro do app (pasta models/) ou baixado na 1a vez (site) ---------- */
 const IOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-if (!S.model) S.model = IOS ? "base" : "small";
+// padrao: base (Rapida, ~80 MB): mais leve no celular; "Precisa" (small) fica como opcao
+if (!S.model) S.model = "base";
 const localModels = {};
 let localWasm = false;
 async function probeLocal() {
-  const head = async u => { try { const r = await fetch(u, { method: "HEAD", cache: "no-store" }); return r.ok; } catch (e) { return false; } };
+  // so conta se veio o arquivo de verdade: hospedagens como o Cloudflare Pages devolvem o index.html
+  // (status 200) para qualquer caminho que nao existe, e ai o site achava que tinha o modelo local
+  const head = async u => {
+    try {
+      const r = await fetch(u, { method: "HEAD", cache: "no-store" });
+      const ct = (r.headers.get("content-type") || "").toLowerCase();
+      return r.ok && ct.indexOf("text/html") < 0 && (/.json$/.test(u) ? ct.indexOf("json") >= 0 : true);
+    } catch (e) { return false; }
+  };
   localModels.small = await head("models/whisper-small/config.json");
   localModels.base = await head("models/whisper-base/config.json");
   localWasm = await head("vendor/ort/ort-wasm-simd-threaded.asyncify.wasm");
