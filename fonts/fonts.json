@@ -1,0 +1,296 @@
+[
+ {
+  "family": "Inter",
+  "file": "Inter-VariableFont_opsz_wght.ttf",
+  "weight": "100 900",
+  "style": "normal"
+ },
+ {
+  "family": "Inter",
+  "file": "Inter-Italic-VariableFont_opsz_wght.ttf",
+  "weight": "100 900",
+  "style": "italic"
+ },
+ {
+  "family": "Montserrat",
+  "file": "Montserrat-VariableFont_wght.ttf",
+  "weight": "100 900",
+  "style": "normal"
+ },
+ {
+  "family": "Montserrat",
+  "file": "Montserrat-Italic.ttf",
+  "weight": "400",
+  "style": "italic"
+ },
+ {
+  "family": "Montserrat",
+  "file": "Montserrat-SemiBoldItalic.ttf",
+  "weight": "600",
+  "style": "italic"
+ },
+ {
+  "family": "Montserrat",
+  "file": "Montserrat-BoldItalic.ttf",
+  "weight": "700",
+  "style": "italic"
+ },
+ {
+  "family": "Montserrat",
+  "file": "Montserrat-ExtraBoldItalic.ttf",
+  "weight": "800",
+  "style": "italic"
+ },
+ {
+  "family": "Montserrat",
+  "file": "Montserrat_Black_Italic.ttf",
+  "weight": "900",
+  "style": "italic"
+ },
+ {
+  "family": "Anton",
+  "file": "Anton-Regular.ttf",
+  "weight": "400",
+  "style": "normal"
+ },
+ {
+  "family": "Bebas Neue",
+  "file": "BebasNeue-Regular.ttf",
+  "weight": "400",
+  "style": "normal"
+ },
+ {
+  "family": "Poppins",
+  "file": "Poppins-Regular.ttf",
+  "weight": "400",
+  "style": "normal"
+ },
+ {
+  "family": "Poppins",
+  "file": "Poppins-Medium.ttf",
+  "weight": "500",
+  "style": "normal"
+ },
+ {
+  "family": "Poppins",
+  "file": "Poppins-SemiBold.ttf",
+  "weight": "600",
+  "style": "normal"
+ },
+ {
+  "family": "Poppins",
+  "file": "Poppins-Bold.ttf",
+  "weight": "700",
+  "style": "normal"
+ },
+ {
+  "family": "Poppins",
+  "file": "Poppins-ExtraBold.ttf",
+  "weight": "800",
+  "style": "normal"
+ },
+ {
+  "family": "Poppins",
+  "file": "Poppins-Black.ttf",
+  "weight": "900",
+  "style": "normal"
+ },
+ {
+  "family": "Poppins",
+  "file": "Poppins-BoldItalic.ttf",
+  "weight": "700",
+  "style": "italic"
+ },
+ {
+  "family": "Poppins",
+  "file": "Poppins-BlackItalic.ttf",
+  "weight": "900",
+  "style": "italic"
+ },
+ {
+  "family": "DM Serif Display",
+  "file": "DMSerifDisplay-Regular.ttf",
+  "weight": "400",
+  "style": "normal"
+ },
+ {
+  "family": "DM Serif Display",
+  "file": "DMSerifDisplay-Italic.ttf",
+  "weight": "400",
+  "style": "italic"
+ },
+ {
+  "family": "Instrument Serif",
+  "file": "instrumentserif-regular.ttf",
+  "weight": "400",
+  "style": "normal"
+ },
+ {
+  "family": "Instrument Serif",
+  "file": "instrumentserif-italic.ttf",
+  "weight": "400",
+  "style": "italic"
+ },
+ {
+  "family": "Playfair Display",
+  "file": "PlayfairDisplay-Regular.ttf",
+  "weight": "400",
+  "style": "normal"
+ },
+ {
+  "family": "Playfair Display",
+  "file": "PlayfairDisplay-Bold.ttf",
+  "weight": "700",
+  "style": "normal"
+ },
+ {
+  "family": "Playfair Display",
+  "file": "PlayfairDisplay-Black.ttf",
+  "weight": "900",
+  "style": "normal"
+ },
+ {
+  "family": "Playfair Display",
+  "file": "PlayfairDisplay-Italic.ttf",
+  "weight": "400",
+  "style": "italic"
+ },
+ {
+  "family": "Playfair Display",
+  "file": "PlayfairDisplay-BoldItalic.ttf",
+  "weight": "700",
+  "style": "italic"
+ },
+ {
+  "family": "Playfair Display",
+  "file": "PlayfairDisplay-ExtraBoldItalic.ttf",
+  "weight": "800",
+  "style": "italic"
+ },
+ {
+  "family": "Playfair Display",
+  "file": "PlayfairDisplay-BlackItalic.ttf",
+  "weight": "900",
+  "style": "italic"
+ },
+ {
+  "family": "Dancing Script",
+  "file": "DancingScript-Bold.ttf",
+  "weight": "700",
+  "style": "normal"
+ },
+ {
+  "family": "Great Vibes",
+  "file": "GreatVibes-Regular.otf",
+  "weight": "400",
+  "style": "normal"
+ },
+ {
+  "family": "Luckiest Guy",
+  "file": "LuckiestGuy-Regular.ttf",
+  "weight": "400",
+  "style": "normal"
+ },
+ {
+  "family": "Bangers",
+  "file": "Bangers-Regular.ttf",
+  "weight": "400",
+  "style": "normal"
+ },
+ {
+  "family": "Outfit",
+  "file": "Outfit-VariableFont_wght.ttf",
+  "weight": "100 900",
+  "style": "normal"
+ },
+ {
+  "family": "Rubik",
+  "file": "Rubik-VariableFont_wght.ttf",
+  "weight": "300 900",
+  "style": "normal"
+ },
+ {
+  "family": "Rubik",
+  "file": "Rubik-BlackItalic.ttf",
+  "weight": "900",
+  "style": "italic"
+ },
+ {
+  "family": "Cormorant Garamond",
+  "file": "CormorantGaramond-Medium.ttf",
+  "weight": "500",
+  "style": "normal"
+ },
+ {
+  "family": "Cormorant Garamond",
+  "file": "CormorantGaramond-SemiBold.ttf",
+  "weight": "600",
+  "style": "normal"
+ },
+ {
+  "family": "Cormorant Garamond",
+  "file": "CormorantGaramond-Bold.ttf",
+  "weight": "700",
+  "style": "normal"
+ },
+ {
+  "family": "Cormorant Garamond",
+  "file": "CormorantGaramond-BoldItalic.ttf",
+  "weight": "700",
+  "style": "italic"
+ },
+ {
+  "family": "Cormorant Garamond",
+  "file": "CormorantGaramond-Italic.ttf",
+  "weight": "400",
+  "style": "italic"
+ },
+ {
+  "family": "Cinzel",
+  "file": "Cinzel-VariableFont_wght.ttf",
+  "weight": "400 900",
+  "style": "normal"
+ },
+ {
+  "family": "Space Grotesk",
+  "file": "SpaceGrotesk-VariableFont_wght.ttf",
+  "weight": "300 700",
+  "style": "normal"
+ },
+ {
+  "family": "Raleway",
+  "file": "Raleway-ExtraBold.ttf",
+  "weight": "800",
+  "style": "normal"
+ },
+ {
+  "family": "Raleway",
+  "file": "Raleway-Bold.ttf",
+  "weight": "700",
+  "style": "normal"
+ },
+ {
+  "family": "Nunito",
+  "file": "Nunito-VariableFont_wght.ttf",
+  "weight": "200 1000",
+  "style": "normal"
+ },
+ {
+  "family": "Orbitron",
+  "file": "orbitron-black.ttf",
+  "weight": "900",
+  "style": "normal"
+ },
+ {
+  "family": "Libre Caslon Text",
+  "file": "LibreCaslonText-Italic.ttf",
+  "weight": "400",
+  "style": "italic"
+ },
+ {
+  "family": "Libre Caslon Text",
+  "file": "LibreCaslonText-Regular.ttf",
+  "weight": "400",
+  "style": "normal"
+ }
+]

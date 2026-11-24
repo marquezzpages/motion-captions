@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#0d0e12">
+<title>Motion Captions</title>
+<link rel="stylesheet" href="css/app.css">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Motion Captions">
+<script type="importmap">{ "imports": { "mediabunny": "./vendor/mediabunny.min.mjs" } }</script>
+</head>
+<body>
+
+<!-- 0. Acesso -->
+<section id="login" class="screen">
+  <div class="scroll pad">
+    <div class="loginbox">
+      <div class="brand big"><span class="dot"></span><span class="appname">Motion Captions</span></div>
+      <p class="muted">Legenda dinâmica e edição de vídeo no celular. Seus vídeos não saem do aparelho.</p>
+      <div id="demoNote" class="demo hidden">Modo demonstração: o login é de mentira e fica só neste navegador. Configure o Supabase em config.js antes de publicar.</div>
+      <button class="google wide" id="gBtn"><span class="g">G</span> Entrar com Google</button>
+      <div class="or"><span>ou com e-mail</span></div>
+      <div class="chips seg" id="lgMode"><button class="chip on" data-v="in">Entrar</button><button class="chip" data-v="up">Criar conta</button></div>
+      <input type="email" id="lgEmail" placeholder="seu e-mail" autocomplete="email">
+      <input type="password" id="lgPass" placeholder="senha (mínimo 6 caracteres)" autocomplete="current-password">
+      <button class="primary wide" id="lgGo">Entrar</button>
+      <button class="link" id="lgForgot">Esqueci a senha</button>
+      <p id="lgMsg" class="msg"></p>
+    </div>
+  </div>
+</section>
+
+<section id="pending" class="screen">
+  <div class="center pad">
+    <div class="lock">🔒</div>
+    <h2>Acesso ainda não liberado</h2>
+    <p class="muted">Você entrou como <b id="pdEmail"></b>. Assim que o acesso deste e-mail for liberado, é só tocar em “Verificar de novo”.</p>
+    <p id="pdContato" class="muted small"></p>
+    <button class="primary wide" id="pdAgain">Verificar de novo</button>
+    <button class="ghost wide" id="pdOut">Sair e usar outro e-mail</button>
+  </div>
+</section>
+
+<section id="newpass" class="screen">
+  <div class="center pad">
+    <h2>Criar nova senha</h2>
+    <input type="password" id="npPass" placeholder="nova senha (mínimo 6 caracteres)" autocomplete="new-password">
+    <button class="primary wide" id="npGo">Salvar senha</button>
+    <p id="npMsg" class="msg"></p>
+  </div>
+</section>
+
+<!-- 1. Inicio: escolher videos -->
+<section id="home" class="screen">
+  <header class="top"><div class="brand"><span class="dot"></span>Motion Captions</div><div style="flex:1"></div><button class="icon" id="menuBtn" aria-label="Conta">☰</button></header>
+  <div class="scroll pad">
+    <div class="hero">
+      <h1>Legenda dinâmica e edição no celular</h1>
+      <p>Tudo acontece no seu aparelho, sem internet e sem enviar seu vídeo para lugar nenhum.</p>
+    </div>
+    <label class="pickbig" id="pickBtn">
+      <input type="file" id="pickInput" accept="video/*" multiple hidden>
+      <span class="ic">＋</span><b>Escolher vídeos</b><small>um ou vários clipes, em sequência</small>
+    </label>
+    <div id="clipList" class="clips"></div>
+    <div id="homeOpts" class="card hidden">
+      <div class="row"><span>Idioma da fala</span>
+        <select id="lang"><option value="portuguese">Português</option><option value="english">Inglês</option><option value="spanish">Espanhol</option></select>
+      </div>
+      <div class="row"><span>Transcrição</span>
+        <select id="model"><option value="small">Precisa (mais lenta)</option><option value="base">Rápida (mais leve)</option></select>
+      </div>
+      <label class="row chk"><input type="checkbox" id="noCaps"> Sem legenda (só editar)</label>
+    </div>
+  </div>
+  <footer class="bottom"><button id="goBtn" class="primary wide" disabled>Continuar</button></footer>
+</section>
+
+<!-- 2. Processando -->
+<section id="work" class="screen">
+  <div class="center pad">
+    <div class="spinner"></div>
+    <h2 id="workTitle">Preparando…</h2>
+    <div class="bar"><i id="workBar"></i></div>
+    <p id="workText" class="muted"></p>
+    <p class="muted small">Pode demorar alguns minutos no primeiro uso. Deixe o app aberto e a tela ligada.</p>
+    <button id="workCancel" class="ghost">Cancelar</button>
+  </div>
+</section>
+
+<!-- 3. Revisao das legendas -->
+<section id="review" class="screen">
+  <header class="top">
+    <button class="icon" id="revBack">‹</button>
+    <div class="title">Revisar legendas</div>
+    <button class="primary sm" id="revDone">Pronto</button>
+  </header>
+  <div class="revpv"><canvas id="revCanvas"></canvas></div>
+  <div class="revtools">
+    <span class="muted small">Toque nas palavras para destacar. Corrija o texto direto na caixa.</span>
+    <button class="chip" id="revReplace">Trocar palavra em todas</button>
+  </div>
+  <div id="revList" class="scroll revlist"></div>
+</section>
+
+<!-- 4. Editor -->
+<section id="editor" class="screen">
+  <header class="top">
+    <button class="icon" id="edBack">‹</button>
+    <div class="title" id="edTitle">Editar</div>
+    <button class="primary sm" id="exportBtn">Exportar</button>
+  </header>
+  <div class="stagewrap" id="stageWrap">
+    <div class="stage" id="stage">
+      <canvas id="pv"></canvas>
+      <div class="guide" id="guideX"></div>
+    </div>
+  </div>
+  <div class="transport">
+    <button class="icon play" id="playBtn">▶</button>
+    <input type="range" id="scrub" min="0" max="1000" value="0">
+    <span id="timeTxt" class="mono">0:00</span>
+  </div>
+  <nav class="tabs" id="tabs">
+    <button data-tab="estilo" class="on">Estilo</button>
+    <button data-tab="texto">Texto</button>
+    <button data-tab="cores">Cores</button>
+    <button data-tab="posicao">Posição</button>
+    <button data-tab="cortes">Cortes</button>
+    <button data-tab="zoom">Zoom</button>
+    <button data-tab="trans">Transições</button>
+    <button data-tab="sons">Sons</button>
+    <button data-tab="legendas">Legendas</button>
+  </nav>
+  <div class="panel scroll" id="panel"></div>
+</section>
+
+<!-- 5. Exportando / pronto -->
+<section id="done" class="screen">
+  <div class="center pad">
+    <video id="doneVideo" class="donevideo hidden" controls playsinline></video>
+    <h2 id="doneTitle">Vídeo salvo</h2>
+    <p id="doneText" class="muted"></p>
+    <button id="doneSave" class="primary wide hidden">Salvar no celular</button>
+    <button id="doneEdit" class="ghost wide">Voltar e ajustar</button>
+    <button id="doneNew" class="primary wide">Novo vídeo</button>
+  </div>
+</section>
+
+<div id="toast" class="toast"></div>
+<div id="modal" class="modal hidden"><div class="sheet" id="sheet"></div></div>
+
+<script src="config.js"></script>
+<script src="js/core/ease.js"></script>
+<script src="js/core/segment.js"></script>
+<script src="js/core/presets_lib.js"></script>
+<script src="js/core/presets.js"></script>
+<script src="js/core/sfx.js"></script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
